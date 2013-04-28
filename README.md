@@ -11,10 +11,53 @@ If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out th
 npm install grunt-es6-module-transpiler --save-dev
 ```
 
-One the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
+To use add the `transpile` task to your Grunt configuration.
+
+### Using with RequireJS/CommonJS:
 
 ```js
 grunt.loadNpmTasks('grunt-es6-module-transpiler');
+
+grunt.initConfig({
+  transpile: {
+    main: {
+      type: "cjs", // or "rjs"
+      files: [{
+        expand: true,
+        cwd: 'lib/',
+        src: ['**/*.js'],
+        dest: 'tmp/'
+      }]
+    }
+  }
+});
+```
+
+### Using with Globals
+
+```js
+grunt.loadNpmTasks('grunt-es6-module-transpiler');
+
+grunt.initConfig({
+  transpile: {
+    main: {
+      type: "globals",
+      imports: { bar: "Bar" },
+      files: {
+        'tmp/globals.js': ['test/fixtures/input.js'],
+        'tmp/globals-bar.js': ['test/fixtures/bar.js']
+      }
+    }
+  }
+});
+```
+
+### Transpiling your files
+
+Manually run the task with `grunt transpile` or include it as part of your build task:
+
+```js
+grunt.registerTask('build', ['clean', 'transpile', '...']);
 ```
 
 ## Contributing
