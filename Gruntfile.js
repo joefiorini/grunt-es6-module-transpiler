@@ -51,7 +51,13 @@ module.exports = function(grunt) {
           'tmp/globals.js': ['test/fixtures/input.js'],
           'tmp/globals-bar.js': ['test/fixtures/bar.js']
         }
-      }
+      },
+      moduleName: {
+        type: 'amd',
+        moduleName: 'namedModule',
+        files: {
+          'tmp/name.js': ['test/fixtures/name.js'],
+        }
     },
 
     // Unit tests.

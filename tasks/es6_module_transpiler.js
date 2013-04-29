@@ -16,8 +16,13 @@ module.exports = function(grunt) {
     var Compiler = require("es6-module-transpiler").Compiler,
         compiler, compiled, ext, method, moduleName;
 
+    if (options.moduleName) {
+      moduleName = options.moduleName;
+    }
+    else {
       ext = path.extname(src);
       moduleName = path.join(path.dirname(src), path.basename(src, ext));
+    }
 
     compiler = new Compiler(grunt.file.read(src), moduleName, options);
 
@@ -46,6 +51,7 @@ module.exports = function(grunt) {
 
     opts.imports = this.data.imports;
     opts.type = this.data.type;
+    opts.moduleName = this.data.moduleName;
 
     this.files.forEach(function(file){
       file.src.filter(function(path){
