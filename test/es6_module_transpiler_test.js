@@ -62,4 +62,13 @@ exports.es6_module_transpiler = {
 
     test.done();
   },
+  anonymousOption: function(test) {
+    test.expect(1);
+
+    var actual = grunt.file.read('tmp/anonymous.js');
+    var expected = grunt.file.read('test/expected/anonymous.js');
+    test.equal(actual, expected, 'understands anonymous option');
+
+    test.done();
+  },
 };

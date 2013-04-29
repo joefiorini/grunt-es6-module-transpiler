@@ -58,6 +58,14 @@ module.exports = function(grunt) {
         files: {
           'tmp/name.js': ['test/fixtures/name.js'],
         }
+      },
+      anonymous: {
+        type: 'amd',
+        anonymous: true,
+        files: {
+          'tmp/anonymous.js': ['test/fixtures/anonymous.js'],
+        }
+      },
     },
 
     // Unit tests.

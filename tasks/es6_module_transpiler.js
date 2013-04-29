@@ -19,6 +19,9 @@ module.exports = function(grunt) {
     if (options.moduleName) {
       moduleName = options.moduleName;
     }
+    else if (options.anonymous) {
+      moduleName = null;
+    }
     else {
       ext = path.extname(src);
       moduleName = path.join(path.dirname(src), path.basename(src, ext));
@@ -52,6 +55,7 @@ module.exports = function(grunt) {
     opts.imports = this.data.imports;
     opts.type = this.data.type;
     opts.moduleName = this.data.moduleName;
+    opts.anonymous = this.data.anonymous;
 
     this.files.forEach(function(file){
       file.src.filter(function(path){
