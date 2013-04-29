@@ -1,4 +1,4 @@
-define(
+define("test/fixtures/input",
   ["bar"],
   function(__dependency1__) {
     "use strict";

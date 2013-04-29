@@ -10,11 +10,16 @@
 
 module.exports = function(grunt) {
 
+  var path = require('path');
+
   function transpile(src, dest, options){
     var Compiler = require("es6-module-transpiler").Compiler,
-        method, compiler, compiled;
+        compiler, compiled, ext, method, moduleName;
 
-    compiler = new Compiler(grunt.file.read(src), null, options);
+      ext = path.extname(src);
+      moduleName = path.join(path.dirname(src), path.basename(src, ext));
+
+    compiler = new Compiler(grunt.file.read(src), moduleName, options);
 
     switch(options.type){
     case 'cjs':
