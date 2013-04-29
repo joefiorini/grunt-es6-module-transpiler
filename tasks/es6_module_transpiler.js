@@ -10,11 +10,29 @@
 
 module.exports = function(grunt) {
 
+  var path = require('path');
+
   function transpile(src, dest, options){
     var Compiler = require("es6-module-transpiler").Compiler,
-        method, compiler, compiled;
+        compiler, compiled, ext, method, moduleName;
 
-    compiler = new Compiler(grunt.file.read(src), null, options);
+    ext = path.extname(src);
+
+    if (ext.slice(1) === 'coffee') {
+      options.coffee = true;
+    }
+
+    if (options.moduleName) {
+      moduleName = options.moduleName;
+    }
+    else if (options.anonymous) {
+      moduleName = null;
+    }
+    else {
+      moduleName = path.join(path.dirname(src), path.basename(src, ext));
+    }
+
+    compiler = new Compiler(grunt.file.read(src), moduleName, options);
 
     switch(options.type){
     case 'cjs':
@@ -41,6 +59,8 @@ module.exports = function(grunt) {
 
     opts.imports = this.data.imports;
     opts.type = this.data.type;
+    opts.moduleName = this.data.moduleName;
+    opts.anonymous = this.data.anonymous;
 
     this.files.forEach(function(file){
       file.src.filter(function(path){

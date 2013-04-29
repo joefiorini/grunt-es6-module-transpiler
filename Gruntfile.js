@@ -51,7 +51,27 @@ module.exports = function(grunt) {
           'tmp/globals.js': ['test/fixtures/input.js'],
           'tmp/globals-bar.js': ['test/fixtures/bar.js']
         }
-      }
+      },
+      moduleName: {
+        type: 'amd',
+        moduleName: 'namedModule',
+        files: {
+          'tmp/name.js': ['test/fixtures/name.js'],
+        }
+      },
+      anonymous: {
+        type: 'amd',
+        anonymous: true,
+        files: {
+          'tmp/anonymous.js': ['test/fixtures/anonymous.js'],
+        }
+      },
+      coffeeSrc: {
+        type: 'amd',
+        files: {
+          'tmp/coffee.coffee': ['test/fixtures/coffee.coffee'],
+        }
+      },
     },
 
     // Unit tests.

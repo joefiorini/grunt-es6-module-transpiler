@@ -53,4 +53,31 @@ exports.es6_module_transpiler = {
 
     test.done();
   },
+  moduleNameOption: function(test) {
+    test.expect(1);
+
+    var actual = grunt.file.read('tmp/name.js')
+    var expected = grunt.file.read('test/expected/name.js')
+    test.equal(actual, expected, 'understands module option');
+
+    test.done();
+  },
+  anonymousOption: function(test) {
+    test.expect(1);
+
+    var actual = grunt.file.read('tmp/anonymous.js');
+    var expected = grunt.file.read('test/expected/anonymous.js');
+    test.equal(actual, expected, 'understands anonymous option');
+
+    test.done();
+  },
+  coffeeSrc: function(test) {
+    test.expect(1);
+
+    var actual = grunt.file.read('tmp/coffee.coffee');
+    var expected = grunt.file.read('test/expected/coffee.coffee');
+    test.equal(actual, expected, 'understands coffee option');
+
+    test.done();
+  },
 };
