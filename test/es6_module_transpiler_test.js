@@ -71,4 +71,13 @@ exports.es6_module_transpiler = {
 
     test.done();
   },
+  coffeeSrc: function(test) {
+    test.expect(1);
+
+    var actual = grunt.file.read('tmp/coffee.coffee');
+    var expected = grunt.file.read('test/expected/coffee.coffee');
+    test.equal(actual, expected, 'understands coffee option');
+
+    test.done();
+  },
 };

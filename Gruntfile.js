@@ -66,6 +66,12 @@ module.exports = function(grunt) {
           'tmp/anonymous.js': ['test/fixtures/anonymous.js'],
         }
       },
+      coffeeSrc: {
+        type: 'amd',
+        files: {
+          'tmp/coffee.coffee': ['test/fixtures/coffee.coffee'],
+        }
+      },
     },
 
     // Unit tests.

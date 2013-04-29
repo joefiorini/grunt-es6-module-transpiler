@@ -16,6 +16,12 @@ module.exports = function(grunt) {
     var Compiler = require("es6-module-transpiler").Compiler,
         compiler, compiled, ext, method, moduleName;
 
+    ext = path.extname(src);
+
+    if (ext.slice(1) === 'coffee') {
+      options.coffee = true;
+    }
+
     if (options.moduleName) {
       moduleName = options.moduleName;
     }
@@ -23,7 +29,6 @@ module.exports = function(grunt) {
       moduleName = null;
     }
     else {
-      ext = path.extname(src);
       moduleName = path.join(path.dirname(src), path.basename(src, ext));
     }
 
