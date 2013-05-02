@@ -56,8 +56,8 @@ exports.es6_module_transpiler = {
   moduleNameOption: function(test) {
     test.expect(1);
 
-    var actual = grunt.file.read('tmp/name.js')
-    var expected = grunt.file.read('test/expected/name.js')
+    var actual = grunt.file.read('tmp/name.js');
+    var expected = grunt.file.read('test/expected/name.js');
     test.equal(actual, expected, 'understands module option');
 
     test.done();
