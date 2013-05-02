@@ -1,7 +1,7 @@
 {
   "name": "grunt-es6-module-transpiler",
   "description": "A Grunt task for processing ES6 module import/export syntax into one of AMD, CommonJS or globals using the es6-module-transpiler",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "homepage": "https://github.com/joefiorini/grunt-es6-module-transpiler",
   "author": {
     "name": "Joe Fiorini",
