@@ -1,6 +1,6 @@
 # grunt-es6-module-transpiler
 
-> A Grunt task for processing ES6 module import/export syntax into one of AMD, CommonJS or globals using the es6-module-transpiler
+> A Grunt task for processing ES6 module import/export syntax into one of AMD, CommonJS or globals using the es6-module-transpiler. Also allows you to temporarily enable ES6 modules for other tasks.
 
 ## Getting Started
 This plugin requires Grunt `~0.4.1`
@@ -60,8 +60,27 @@ Manually run the task with `grunt transpile` or include it as part of your build
 grunt.registerTask('build', ['clean', 'transpile', '...']);
 ```
 
+## Using modules in other node scripts
+
+Sometimes during the course of building an app, your grunt tasks will call out to other node scripts that interpret your files, but don't transpile them first. For example, running tests via [Mocha](http://visionmedia.github.io/mocha): you cannot use ES6 modules within your Mocha tests unless you specifically enable it before your tests run. You can now do that with a grunt task. For example:
+
+```javascript
+grunt.registerTask('test', ['transpile:enable', 'simplemocha']);
+```
+
+This will run your tests through the transpiler, automatically converting imports/exports to CommonJS. You could also chain tasks on the command line like:
+
+```
+grunt transpile:enable loadData
+```
+
+### Caveat
+
+The module transpiler forces strict mode; there is no option to turn this off. If, like me, you typically use Mocha with [Chai](http://chaijs.com), this can cause a problem because Chai attempts to access `arguments.callee`, which violates strict mode. I switched to using [expect.js](https://github.com/LearnBoost/expect.js/) and it works great.
+
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
-_(Nothing yet)_
+05/02/2013 v0.2.0 - Fixes for globals, CoffeeScript, transpile:enable task for node scripts
+04/17/2013 v0.1.0 - Initial release, supports basic transpile task
