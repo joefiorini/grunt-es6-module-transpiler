@@ -80,4 +80,14 @@ exports.es6_module_transpiler = {
 
     test.done();
   },
+  enable: function(test){
+    test.expect(1);
+
+    var actual = require("./expected/enable"),
+        expected = "bar";
+
+    test.equal(actual, expected, 'enables transpiler for node tasks');
+
+    test.done();
+  }
 };

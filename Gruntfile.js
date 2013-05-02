@@ -72,6 +72,8 @@ module.exports = function(grunt) {
           'tmp/coffee.coffee': ['test/fixtures/coffee.coffee'],
         }
       },
+      enable: {
+      }
     },
 
     // Unit tests.
