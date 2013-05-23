@@ -59,6 +59,29 @@ module.exports = function(grunt) {
           'tmp/name.js': ['test/fixtures/name.js'],
         }
       },
+      moduleNameCallback: {
+        type: 'amd',
+        moduleName: function(srcWithoutExt, file){
+          return 'my_app/' + srcWithoutExt.replace(/^test\/fixtures\//, '');
+        },
+        files: {
+          'tmp/name_callback.js': ['test/fixtures/name_callback.js'],
+        }
+      },
+      moduleNameCallbackWithCwd: {
+        type: 'amd',
+        moduleName: function(srcWithoutExt, file){
+          return 'my_app/' + srcWithoutExt;
+        },
+        files: [
+          {
+            expand: true,     // Enable dynamic expansion.
+            cwd: 'test/fixtures/lib/',      // Src matches are relative to this path.
+            src: ['**/*.js'], // Actual pattern(s) to match.
+            dest: 'tmp/'   // Destination path prefix.
+          }
+        ]
+      },
       anonymous: {
         type: 'amd',
         anonymous: true,
