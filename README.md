@@ -82,5 +82,6 @@ The module transpiler forces strict mode; there is no option to turn this off. I
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
+05/28/2013 v0.3.0 - Add callback for dynamically specifying AMD modulename
 05/02/2013 v0.2.0 - Fixes for globals, CoffeeScript, transpile:enable task for node scripts
 04/17/2013 v0.1.0 - Initial release, supports basic transpile task
