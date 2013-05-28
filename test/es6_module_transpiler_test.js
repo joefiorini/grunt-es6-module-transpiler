@@ -58,7 +58,25 @@ exports.es6_module_transpiler = {
 
     var actual = grunt.file.read('tmp/name.js');
     var expected = grunt.file.read('test/expected/name.js');
-    test.equal(actual, expected, 'understands module option');
+    test.equal(actual, expected, 'understands moduleName option');
+
+    test.done();
+  },
+  moduleNameCallbackOption: function(test) {
+    test.expect(1);
+
+    var actual = grunt.file.read('tmp/name_callback.js');
+    var expected = grunt.file.read('test/expected/name_callback.js');
+    test.equal(actual, expected, 'understands moduleName option with function');
+
+    test.done();
+  },
+  moduleNameCallbackOptionWithCwd: function(test) {
+    test.expect(1);
+
+    var actual = grunt.file.read('tmp/name_callback_with_cwd.js');
+    var expected = grunt.file.read('test/expected/name_callback_with_cwd.js');
+    test.equal(actual, expected, 'understands moduleName option with function with cwd');
 
     test.done();
   },

@@ -12,8 +12,9 @@ module.exports = function(grunt) {
 
   var path = require('path');
 
-  function transpile(src, dest, options){
-    var Compiler = require("es6-module-transpiler").Compiler,
+  function transpile(file, options){
+    var src = file.src,
+        Compiler = require("es6-module-transpiler").Compiler,
         compiler, compiled, ext, method, moduleName;
 
     ext = path.extname(src);
@@ -22,14 +23,16 @@ module.exports = function(grunt) {
       options.coffee = true;
     }
 
-    if (options.moduleName) {
-      moduleName = options.moduleName;
-    }
-    else if (options.anonymous) {
+    if (options.anonymous) {
       moduleName = null;
-    }
-    else {
+    } else if (typeof options.moduleName === 'string') {
+      moduleName = options.moduleName;
+    } else {
       moduleName = path.join(path.dirname(src), path.basename(src, ext));
+      if (file.orig.cwd)
+        moduleName = moduleName.slice(file.orig.cwd.length);
+      if (options.moduleName)
+        moduleName = options.moduleName(moduleName, file);
     }
 
     compiler = new Compiler(grunt.file.read(src), moduleName, options);
@@ -50,7 +53,7 @@ module.exports = function(grunt) {
 
     compiled = compiler[method].apply(compiler);
 
-    grunt.file.write(dest, compiled);
+    grunt.file.write(file.dest, compiled);
   }
 
   grunt.registerMultiTask("transpile", function(){
@@ -76,7 +79,7 @@ module.exports = function(grunt) {
           return true;
         }
       }).forEach(function(path){
-        transpile(path, file.dest, opts);
+        transpile({src:path, dest:file.dest, orig:file.orig}, opts);
       });
     });
 
