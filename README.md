@@ -21,7 +21,7 @@ grunt.loadNpmTasks('grunt-es6-module-transpiler');
 grunt.initConfig({
   transpile: {
     main: {
-      type: "cjs", // or "rjs"
+      type: "cjs", // or "amd"
       files: [{
         expand: true,
         cwd: 'lib/',
