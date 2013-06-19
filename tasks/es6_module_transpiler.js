@@ -28,11 +28,13 @@ module.exports = function(grunt) {
     } else if (typeof options.moduleName === 'string') {
       moduleName = options.moduleName;
     } else {
-      moduleName = path.join(path.dirname(src), path.basename(src, ext));
-      if (file.orig.cwd)
+      moduleName = path.join(path.dirname(src), path.basename(src, ext)).replace(/[\\]/g, '/');
+      if (file.orig.cwd) {
         moduleName = moduleName.slice(file.orig.cwd.length);
-      if (options.moduleName)
+      }
+      if (options.moduleName) {
         moduleName = options.moduleName(moduleName, file);
+      }
     }
 
     compiler = new Compiler(grunt.file.read(src), moduleName, options);
