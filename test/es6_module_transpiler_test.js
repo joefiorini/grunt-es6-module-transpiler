@@ -22,6 +22,10 @@ var grunt = require('grunt');
     test.ifError(value)
 */
 
+function normalizedFileRead(path) {
+  return grunt.util.normalizelf(grunt.file.read(path));
+}
+
 exports.es6_module_transpiler = {
   setUp: function(done) {
     done();
@@ -29,8 +33,8 @@ exports.es6_module_transpiler = {
   toCJS: function(test) {
     test.expect(1);
 
-    var actual = grunt.file.read('tmp/cjs.js');
-    var expected = grunt.file.read('test/expected/cjs.js');
+    var actual = normalizedFileRead('tmp/cjs.js');
+    var expected = normalizedFileRead('test/expected/cjs.js');
     test.equal(actual, expected, 'outputs CommonJS');
 
     test.done();
@@ -38,8 +42,8 @@ exports.es6_module_transpiler = {
   toAMD: function(test) {
     test.expect(1);
 
-    var actual = grunt.file.read('tmp/amd.js');
-    var expected = grunt.file.read('test/expected/amd.js');
+    var actual = normalizedFileRead('tmp/amd.js');
+    var expected = normalizedFileRead('test/expected/amd.js');
     test.equal(actual, expected, 'outputs AMD');
 
     test.done();
@@ -47,8 +51,8 @@ exports.es6_module_transpiler = {
   toGlobals: function(test) {
     test.expect(1);
 
-    var actual = grunt.file.read('tmp/globals.js');
-    var expected = grunt.file.read('test/expected/globals.js');
+    var actual = normalizedFileRead('tmp/globals.js');
+    var expected = normalizedFileRead('test/expected/globals.js');
     test.equal(actual, expected, 'outputs Globals');
 
     test.done();
@@ -56,8 +60,8 @@ exports.es6_module_transpiler = {
   moduleNameOption: function(test) {
     test.expect(1);
 
-    var actual = grunt.file.read('tmp/name.js');
-    var expected = grunt.file.read('test/expected/name.js');
+    var actual = normalizedFileRead('tmp/name.js');
+    var expected = normalizedFileRead('test/expected/name.js');
     test.equal(actual, expected, 'understands moduleName option');
 
     test.done();
@@ -65,8 +69,8 @@ exports.es6_module_transpiler = {
   moduleNameCallbackOption: function(test) {
     test.expect(1);
 
-    var actual = grunt.file.read('tmp/name_callback.js');
-    var expected = grunt.file.read('test/expected/name_callback.js');
+    var actual = normalizedFileRead('tmp/name_callback.js');
+    var expected = normalizedFileRead('test/expected/name_callback.js');
     test.equal(actual, expected, 'understands moduleName option with function');
 
     test.done();
@@ -74,8 +78,8 @@ exports.es6_module_transpiler = {
   moduleNameCallbackOptionWithCwd: function(test) {
     test.expect(1);
 
-    var actual = grunt.file.read('tmp/name_callback_with_cwd.js');
-    var expected = grunt.file.read('test/expected/name_callback_with_cwd.js');
+    var actual = normalizedFileRead('tmp/name_callback_with_cwd.js');
+    var expected = normalizedFileRead('test/expected/name_callback_with_cwd.js');
     test.equal(actual, expected, 'understands moduleName option with function with cwd');
 
     test.done();
@@ -83,8 +87,8 @@ exports.es6_module_transpiler = {
   anonymousOption: function(test) {
     test.expect(1);
 
-    var actual = grunt.file.read('tmp/anonymous.js');
-    var expected = grunt.file.read('test/expected/anonymous.js');
+    var actual = normalizedFileRead('tmp/anonymous.js');
+    var expected = normalizedFileRead('test/expected/anonymous.js');
     test.equal(actual, expected, 'understands anonymous option');
 
     test.done();
@@ -92,8 +96,8 @@ exports.es6_module_transpiler = {
   coffeeSrc: function(test) {
     test.expect(1);
 
-    var actual = grunt.file.read('tmp/coffee.coffee');
-    var expected = grunt.file.read('test/expected/coffee.coffee');
+    var actual = normalizedFileRead('tmp/coffee.coffee');
+    var expected = normalizedFileRead('test/expected/coffee.coffee');
     test.equal(actual, expected, 'understands coffee option');
 
     test.done();
