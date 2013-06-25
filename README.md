@@ -74,6 +74,10 @@ This will run your tests through the transpiler, automatically converting import
 grunt transpile:enable loadData
 ```
 
+### Resources
+
+- [Using Grunt & the ES6 Module Transpiler](http://www.thomasboyt.com/2013/06/21/es6-module-transpiler) by Thomas Boyt
+
 ### Caveat
 
 The module transpiler forces strict mode; there is no option to turn this off. If, like me, you typically use Mocha with [Chai](http://chaijs.com), this can cause a problem because Chai attempts to access `arguments.callee`, which violates strict mode. I switched to using [expect.js](https://github.com/LearnBoost/expect.js/) and it works great.
