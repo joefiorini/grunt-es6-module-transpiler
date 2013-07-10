@@ -86,6 +86,7 @@ The module transpiler forces strict mode; there is no option to turn this off. I
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
+07/09/2013 v0.4.1 - Improved windows support when using amd
 07/09/2013 v0.4.0 - Update to v0.2.0 of es6-module-transpiler for new syntax support
 05/28/2013 v0.3.0 - Add callback for dynamically specifying AMD modulename
 05/02/2013 v0.2.0 - Fixes for globals, CoffeeScript, transpile:enable task for node scripts
