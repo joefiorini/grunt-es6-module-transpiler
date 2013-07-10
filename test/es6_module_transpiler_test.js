@@ -94,7 +94,7 @@ exports.es6_module_transpiler = {
 
     var actual = grunt.file.read('tmp/coffee.coffee');
     var expected = grunt.file.read('test/expected/coffee.coffee');
-    test.equal(actual, expected, 'understands coffee option');
+    test.equal(actual.trim(), expected.trim(), 'understands coffee option');
 
     test.done();
   },

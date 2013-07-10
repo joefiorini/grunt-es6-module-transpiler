@@ -1,3 +1,3 @@
-import "./foo" as foo;
+import foo from "./foo";
 
-export = foo;
+export default foo;

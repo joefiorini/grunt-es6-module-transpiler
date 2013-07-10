@@ -1,7 +1,6 @@
 define("test/fixtures/coffee",
   ["bar"],
-  (__dependency1__) ->
+  (foo) ->
     "use strict"
-    foo = __dependency1__.foo
 
   )
