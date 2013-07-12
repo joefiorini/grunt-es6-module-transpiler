@@ -12,7 +12,7 @@ module.exports = function(grunt) {
 
   var path = require('path');
 
-  function transpile(file, options){
+  function transpile(file, options) {
     var src = file.src,
         Compiler = require("es6-module-transpiler").Compiler,
         compiler, compiled, ext, method, moduleName;
@@ -20,7 +20,7 @@ module.exports = function(grunt) {
     ext = path.extname(src);
 
     if (ext.slice(1) === 'coffee') {
-      options.coffee = true;
+      options = grunt.util._.extend({coffee: true}, options);
     }
 
     if (options.anonymous) {
