@@ -102,6 +102,16 @@ exports.es6_module_transpiler = {
 
     test.done();
   },
+  mixedCoffeeAndJS: function(test) {
+    test.expect(1);
+
+    // in the config there is a .coffee file listed before this one
+    var actual = normalizedFileRead('tmp/anonymous.js');
+    var expected = normalizedFileRead('test/expected/anonymous.js');
+    test.equal(actual, expected, 'uses coffee option only on CoffeeScript files');
+
+    test.done();
+  },
   enable: function(test){
     test.expect(1);
 
