@@ -46,6 +46,9 @@ module.exports = function(grunt) {
     case 'amd':
       method = "toAMD";
       break;
+    case 'umd':
+      method = "toUMD";
+      break;
     case 'globals':
       method = "toGlobals";
       break;
