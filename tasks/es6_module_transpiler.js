@@ -24,7 +24,7 @@ module.exports = function(grunt) {
     }
 
     if (options.anonymous) {
-      moduleName = null;
+      moduleName = '';
     } else if (typeof options.moduleName === 'string') {
       moduleName = options.moduleName;
     } else {
