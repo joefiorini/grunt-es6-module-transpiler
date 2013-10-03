@@ -66,6 +66,7 @@ module.exports = function(grunt) {
     opts.type = this.data.type;
     opts.moduleName = this.data.moduleName;
     opts.anonymous = this.data.anonymous;
+    opts.compatFix = this.data.compatFix;
 
     if(this.target === "enable"){
       require("es6-module-transpiler/lib/require_support").enable();
