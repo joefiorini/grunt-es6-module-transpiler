@@ -102,8 +102,6 @@ module.exports = function(grunt) {
           'tmp/anonymous.coffee': ['test/fixtures/anonymous.coffee'],
           'tmp/anonymous.js': ['test/fixtures/anonymous.js'],
         }
-      },
-      enable: {
       }
     },
 

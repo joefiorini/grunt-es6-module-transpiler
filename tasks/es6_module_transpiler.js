@@ -67,11 +67,6 @@ module.exports = function(grunt) {
     opts.moduleName = this.data.moduleName;
     opts.anonymous = this.data.anonymous;
 
-    if(this.target === "enable"){
-      require("es6-module-transpiler/lib/require_support").enable();
-      return;
-    }
-
     this.files.forEach(function(file){
       file.src.filter(function(path){
         if(!grunt.file.exists(path)){

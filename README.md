@@ -60,20 +60,6 @@ Manually run the task with `grunt transpile` or include it as part of your build
 grunt.registerTask('build', ['clean', 'transpile', '...']);
 ```
 
-## Using modules in other node scripts
-
-Sometimes during the course of building an app, your grunt tasks will call out to other node scripts that interpret your files, but don't transpile them first. For example, running tests via [Mocha](http://visionmedia.github.io/mocha): you cannot use ES6 modules within your Mocha tests unless you specifically enable it before your tests run. You can now do that with a grunt task. For example:
-
-```javascript
-grunt.registerTask('test', ['transpile:enable', 'simplemocha']);
-```
-
-This will run your tests through the transpiler, automatically converting imports/exports to CommonJS. You could also chain tasks on the command line like:
-
-```
-grunt transpile:enable loadData
-```
-
 ### Resources
 
 - [Using Grunt & the ES6 Module Transpiler](http://www.thomasboyt.com/2013/06/21/es6-module-transpiler) by Thomas Boyt
@@ -86,6 +72,7 @@ The module transpiler forces strict mode; there is no option to turn this off. I
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
+10/07/2013 v0.5.0 - Support for v0.3.0 of es6-module-transpiler; removes transpile:enable task as the feature no longer exists
 07/09/2013 v0.4.1 - Improved windows support when using amd
 07/09/2013 v0.4.0 - Update to v0.2.0 of es6-module-transpiler for new syntax support
 05/28/2013 v0.3.0 - Add callback for dynamically specifying AMD modulename
