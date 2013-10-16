@@ -40,6 +40,6 @@
     "gruntplugin"
   ],
   "dependencies": {
-    "es6-module-transpiler": "git://github.com/square/es6-module-transpiler.git#master"
+    "es6-module-transpiler": "git://github.com/joefiorini/es6-module-transpiler.git#npmable"
   }
 }
