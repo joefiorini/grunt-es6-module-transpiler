@@ -29,9 +29,11 @@ module.exports = function(grunt) {
     },
 
     release: {
-      tagName: 'v<%= version %>',
-      commitMessage: 'Release v%VERSION% :tada:',
-      tagMessage: 'Release v<%= version %>'
+      options: {
+        tagName: 'v<%= version %>',
+        commitMessage: 'Release v%VERSION% :tada:',
+        tagMessage: 'Release v<%= version %>'
+      }
     },
 
     // Configuration to be run (and then tested).
