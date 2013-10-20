@@ -28,6 +28,12 @@ module.exports = function(grunt) {
       tests: ['tmp'],
     },
 
+    release: {
+      tagName: 'v<%= version %>',
+      commitMessage: 'Release v%VERSION% :tada:',
+      tagMessage: 'Release v<%= version %>'
+    },
+
     // Configuration to be run (and then tested).
     transpile: {
       toCJS: {
@@ -119,6 +125,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-nodeunit');
+  grunt.loadNpmTasks('grunt-release');
 
   // Whenever the "test" task is run, first clean the "tmp" dir, then run this
   // plugin's task(s), then test the result.
