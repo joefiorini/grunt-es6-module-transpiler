@@ -66,6 +66,7 @@ module.exports = function(grunt) {
     opts.type = this.data.type;
     opts.moduleName = this.data.moduleName;
     opts.anonymous = this.data.anonymous;
+    opts.compatFix = this.data.compatFix;
 
     this.files.forEach(function(file){
       file.src.filter(function(path){
