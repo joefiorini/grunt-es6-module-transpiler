@@ -46,6 +46,9 @@ module.exports = function(grunt) {
     case 'amd':
       method = "toAMD";
       break;
+    case 'yui':
+      method = "toYUI";
+      break;
     case 'globals':
       method = "toGlobals";
       break;
