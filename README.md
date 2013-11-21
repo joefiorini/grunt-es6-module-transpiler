@@ -1,6 +1,6 @@
 # grunt-es6-module-transpiler
 
-> A Grunt task for processing ES6 module import/export syntax into one of AMD, CommonJS or globals using the es6-module-transpiler. Also allows you to temporarily enable ES6 modules for other tasks.
+> A Grunt task for processing ES6 module import/export syntax into one of AMD, CommonJS, YUI or globals using the es6-module-transpiler. Also allows you to temporarily enable ES6 modules for other tasks.
 
 ## Getting Started
 This plugin requires Grunt `~0.4.1`
@@ -21,7 +21,7 @@ grunt.loadNpmTasks('grunt-es6-module-transpiler');
 grunt.initConfig({
   transpile: {
     main: {
-      type: "cjs", // or "amd"
+      type: "cjs", // or "amd" or "yui"
       files: [{
         expand: true,
         cwd: 'lib/',
