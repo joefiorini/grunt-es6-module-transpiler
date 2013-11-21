@@ -52,6 +52,13 @@ module.exports = function(grunt) {
           'tmp/amd-bar.js': ['test/fixtures/bar.js']
         }
       },
+      toYUI: {
+        type: "yui",
+        files: {
+          'tmp/yui.js': ['test/fixtures/input.js'],
+          'tmp/yui-bar.js': ['test/fixtures/bar.js']
+        }
+      },
       toGlobals: {
         type: "globals",
         imports: { bar: "Bar" },
