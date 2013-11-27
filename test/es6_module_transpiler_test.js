@@ -48,6 +48,15 @@ exports.es6_module_transpiler = {
 
     test.done();
   },
+  toYUI: function(test) {
+    test.expect(1);
+
+    var actual = normalizedFileRead('tmp/yui.js');
+    var expected = normalizedFileRead('test/expected/yui.js');
+    test.equal(actual, expected, 'outputs YUI');
+
+    test.done();
+  },
   toGlobals: function(test) {
     test.expect(1);
 
