@@ -61,6 +61,11 @@ module.exports = function(grunt) {
     grunt.file.write(file.dest, compiled);
   }
 
+  function formatTranspilerError(filename, e) {
+    var pos = '[' + 'L' + e.lineNumber + ':' + ('C' + e.column) + ']';
+    return filename + ': ' + pos + ' ' + e.description;
+  }
+
   grunt.registerMultiTask("transpile", function(){
 
     var opts = {};
@@ -80,7 +85,14 @@ module.exports = function(grunt) {
           return true;
         }
       }).forEach(function(path){
-        transpile({src:path, dest:file.dest, orig:file.orig}, opts);
+        try {
+          transpile({src:path, dest:file.dest, orig:file.orig}, opts);
+        } catch (e) {
+          var message = formatTranspilerError(path, e);
+
+          grunt.log.error(message);
+          grunt.fail.warn('Error compiling ' + path);
+        }
       });
     });
 
