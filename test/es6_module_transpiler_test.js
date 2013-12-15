@@ -102,15 +102,6 @@ exports.es6_module_transpiler = {
 
     test.done();
   },
-  coffeeSrc: function(test) {
-    test.expect(1);
-
-    var actual = normalizedFileRead('tmp/coffee.coffee');
-    var expected = normalizedFileRead('test/expected/coffee.coffee');
-    test.equal(actual.trim(), expected.trim(), 'understands coffee option');
-
-    test.done();
-  },
   mixedCoffeeAndJS: function(test) {
     test.expect(1);
 
