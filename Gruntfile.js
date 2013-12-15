@@ -117,6 +117,20 @@ module.exports = function(grunt) {
           'tmp/anonymous.coffee': ['test/fixtures/anonymous.coffee'],
           'tmp/anonymous.js': ['test/fixtures/anonymous.js'],
         }
+      },
+      importError: {
+        type: 'amd',
+        anonymous: true,
+        files: {
+          'tmp/import-error.js': ['test/fixtures/import-error.js']
+        }
+      },
+      exportError: {
+        type: 'amd',
+        anonymous: true,
+        files: {
+          'tmp/export-error.js': ['test/fixtures/export-error.js']
+        }
       }
     },
 
